@@ -16,6 +16,7 @@
 		0E6BF5041B2EA91C001A9402 /* KMDrawerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6BF5031B2EA91C001A9402 /* KMDrawerController.swift */; };
 		0E6BF5061B2EAD0D001A9402 /* KMDrawerAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6BF5051B2EAD0D001A9402 /* KMDrawerAnimator.swift */; };
 		0E6BF5081B2EB4D8001A9402 /* KMDrawerTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6BF5071B2EB4D8001A9402 /* KMDrawerTransitionDelegate.swift */; };
+		0E6BF50E1B2EC007001A9402 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6BF50D1B2EC007001A9402 /* MenuController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		0E6BF5031B2EA91C001A9402 /* KMDrawerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMDrawerController.swift; sourceTree = "<group>"; };
 		0E6BF5051B2EAD0D001A9402 /* KMDrawerAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMDrawerAnimator.swift; sourceTree = "<group>"; };
 		0E6BF5071B2EB4D8001A9402 /* KMDrawerTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMDrawerTransitionDelegate.swift; sourceTree = "<group>"; };
+		0E6BF50D1B2EC007001A9402 /* MenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 			children = (
 				0E6BF4E21B2EA868001A9402 /* AppDelegate.swift */,
 				0E6BF4E41B2EA868001A9402 /* ViewController.swift */,
+				0E6BF50D1B2EC007001A9402 /* MenuController.swift */,
 				0E6BF4E61B2EA868001A9402 /* Main.storyboard */,
 				0E6BF4E91B2EA868001A9402 /* Images.xcassets */,
 				0E6BF4EB1B2EA868001A9402 /* LaunchScreen.xib */,
@@ -234,6 +237,7 @@
 				0E6BF5061B2EAD0D001A9402 /* KMDrawerAnimator.swift in Sources */,
 				0E6BF4E31B2EA868001A9402 /* AppDelegate.swift in Sources */,
 				0E6BF5081B2EB4D8001A9402 /* KMDrawerTransitionDelegate.swift in Sources */,
+				0E6BF50E1B2EC007001A9402 /* MenuController.swift in Sources */,
 				0E6BF5041B2EA91C001A9402 /* KMDrawerController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -430,6 +434,7 @@
 				0E6BF4FE1B2EA868001A9402 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0E6BF4FF1B2EA868001A9402 /* Build configuration list for PBXNativeTarget "KMDrawerControllerExampleTests" */ = {
 			isa = XCConfigurationList;
@@ -438,6 +443,7 @@
 				0E6BF5011B2EA868001A9402 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
