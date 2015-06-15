@@ -13,6 +13,9 @@
 		0E6BF4EA1B2EA868001A9402 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E6BF4E91B2EA868001A9402 /* Images.xcassets */; };
 		0E6BF4ED1B2EA868001A9402 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E6BF4EB1B2EA868001A9402 /* LaunchScreen.xib */; };
 		0E6BF4F91B2EA868001A9402 /* KMDrawerControllerExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6BF4F81B2EA868001A9402 /* KMDrawerControllerExampleTests.swift */; };
+		0E6BF5041B2EA91C001A9402 /* KMDrawerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6BF5031B2EA91C001A9402 /* KMDrawerController.swift */; };
+		0E6BF5061B2EAD0D001A9402 /* KMDrawerAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6BF5051B2EAD0D001A9402 /* KMDrawerAnimator.swift */; };
+		0E6BF5081B2EB4D8001A9402 /* KMDrawerTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6BF5071B2EB4D8001A9402 /* KMDrawerTransitionDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,9 @@
 		0E6BF4F21B2EA868001A9402 /* KMDrawerControllerExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KMDrawerControllerExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E6BF4F71B2EA868001A9402 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0E6BF4F81B2EA868001A9402 /* KMDrawerControllerExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMDrawerControllerExampleTests.swift; sourceTree = "<group>"; };
+		0E6BF5031B2EA91C001A9402 /* KMDrawerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMDrawerController.swift; sourceTree = "<group>"; };
+		0E6BF5051B2EAD0D001A9402 /* KMDrawerAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMDrawerAnimator.swift; sourceTree = "<group>"; };
+		0E6BF5071B2EB4D8001A9402 /* KMDrawerTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMDrawerTransitionDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +65,7 @@
 		0E6BF4D41B2EA868001A9402 = {
 			isa = PBXGroup;
 			children = (
+				0E6BF5021B2EA8FF001A9402 /* KMDrawerController */,
 				0E6BF4DF1B2EA868001A9402 /* KMDrawerControllerExample */,
 				0E6BF4F51B2EA868001A9402 /* KMDrawerControllerExampleTests */,
 				0E6BF4DE1B2EA868001A9402 /* Products */,
@@ -110,6 +117,17 @@
 				0E6BF4F71B2EA868001A9402 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0E6BF5021B2EA8FF001A9402 /* KMDrawerController */ = {
+			isa = PBXGroup;
+			children = (
+				0E6BF5031B2EA91C001A9402 /* KMDrawerController.swift */,
+				0E6BF5051B2EAD0D001A9402 /* KMDrawerAnimator.swift */,
+				0E6BF5071B2EB4D8001A9402 /* KMDrawerTransitionDelegate.swift */,
+			);
+			name = KMDrawerController;
+			path = ../KMDrawerController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,7 +231,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E6BF4E51B2EA868001A9402 /* ViewController.swift in Sources */,
+				0E6BF5061B2EAD0D001A9402 /* KMDrawerAnimator.swift in Sources */,
 				0E6BF4E31B2EA868001A9402 /* AppDelegate.swift in Sources */,
+				0E6BF5081B2EB4D8001A9402 /* KMDrawerTransitionDelegate.swift in Sources */,
+				0E6BF5041B2EA91C001A9402 /* KMDrawerController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
