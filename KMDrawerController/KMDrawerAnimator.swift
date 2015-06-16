@@ -12,6 +12,7 @@ class KMDrawerAnimator: NSObject, UIViewControllerAnimatedTransitioning {
 
     var duration: NSTimeInterval = 0.5
     var presenting: Bool = false
+    var drawerRatio: CGFloat = 1.0
 
     init(presenting: Bool) {
         self.presenting = presenting
@@ -37,7 +38,8 @@ class KMDrawerAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         let destination = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
         let container = transitionContext.containerView()
 
-        let endFrame = transitionContext.finalFrameForViewController(source)
+        var endFrame = transitionContext.finalFrameForViewController(source)
+        endFrame.size.width *= self.drawerRatio
         container.addSubview(destination.view)
 
         var startFrame = endFrame
@@ -53,7 +55,7 @@ class KMDrawerAnimator: NSObject, UIViewControllerAnimatedTransitioning {
 
         // source.beginAppearanceTransition(false, animated: true)
         let duration = self.transitionDuration(transitionContext)
-        UIView.animateWithDuration(duration, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.0, options: nil, animations: {
+        UIView.animateWithDuration(duration, delay: 0.0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.0, options: nil, animations: {
             // source.view.tintAdjustmentMode = .Dimmed
             destination.view.frame = endFrame
         }) { (finished: Bool) -> Void in
@@ -71,13 +73,12 @@ class KMDrawerAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         let startFrame = transitionContext.initialFrameForViewController(source)
         var endFrame = startFrame
         endFrame.origin.x -= endFrame.size.width
-
         source.view.frame = startFrame
         // source.view.layoutIfNeeded()
 
         // destination.beginAppearanceTransition(true, animated: true)
         let duration = self.transitionDuration(transitionContext)
-        UIView.animateWithDuration(duration, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.0, options: nil, animations: {
+        UIView.animateWithDuration(duration, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.8, options: nil, animations: {
             // destination.view.tintAdjustmentMode = .Automatic
             source.view.frame = endFrame
         }) { (finished: Bool) -> Void in

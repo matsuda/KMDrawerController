@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DrawerController: KMDrawerController {
+class DrawerController: KMDrawerController, UIViewControllerTransitioningDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +20,7 @@ class DrawerController: KMDrawerController {
         super.awakeFromNib()
         self.centerController = self.storyboard?.instantiateViewControllerWithIdentifier("RootNavigation") as! UIViewController
         self.leftController = MenuController(style:.Grouped)
+        self.drawerTransitionDelegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,4 +38,15 @@ class DrawerController: KMDrawerController {
     }
     */
 
+    // MARK: - UIViewControllerTransitioningDelegate
+
+    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        let animator = KMDrawerAnimator(presenting: true)
+        animator.drawerRatio = 0.9
+        return animator
+    }
+
+    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return KMDrawerAnimator(presenting: false)
+    }
 }

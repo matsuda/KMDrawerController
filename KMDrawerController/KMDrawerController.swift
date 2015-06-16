@@ -14,7 +14,7 @@ enum KMDrawerState {
 
 class KMDrawerController: UIViewController, UIGestureRecognizerDelegate {
 
-    var drawerTransitionDelegate = KMDrawerTransitionDelegate()
+    var drawerTransitionDelegate: UIViewControllerTransitioningDelegate = KMDrawerTransitionDelegate()
     var drawerState: KMDrawerState = .None
 
     var centerController: UIViewController! {
