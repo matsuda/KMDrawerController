@@ -14,54 +14,33 @@ enum KMDrawerState {
 
 class KMDrawerController: UIViewController, UIGestureRecognizerDelegate {
 
-    let drawerTransitionDelegate = KMDrawerTransitionDelegate()
+    var drawerTransitionDelegate = KMDrawerTransitionDelegate()
     var drawerState: KMDrawerState = .None
-    var drawerLength: CGFloat = 200 {
-        didSet {
-            if let controller = self.leftController {
-                var f = controller.view.frame
-                f.size.width = self.drawerLength
-                controller.view.frame = f
-                controller.view.setNeedsLayout()
-            }
-        }
-    }
 
-    var leftController: UIViewController? {
+    var centerController: UIViewController! {
         willSet {
-            if let controlelr = self.leftController {
-                controlelr.view.removeFromSuperview()
-                controlelr.removeFromParentViewController()
-            }
+            self.removeChildController(self.centerController)
         }
         didSet {
-            if let controller = self.leftController {
+            if let controller = self.centerController {
                 self.addChildViewController(controller)
-                var f = controller.view.frame
-                f.size.width = self.drawerLength
-                controller.view.frame = f
+                controller.view.frame = self.view.bounds
                 self.view.addSubview(controller.view)
                 controller.didMoveToParentViewController(self)
             }
         }
     }
 
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        initialize()
-    }
-
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        initialize()
-    }
+    var leftController: UIViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.clearColor()
+        /*
         let gesture = UITapGestureRecognizer(target: self, action: "handleTapGesture:")
         gesture.delegate = self
         self.view.addGestureRecognizer(gesture)
+        */
     }
 
     override func didReceiveMemoryWarning() {
@@ -79,41 +58,65 @@ class KMDrawerController: UIViewController, UIGestureRecognizerDelegate {
     }
     */
 
-    func initialize() {
-        self.transitioningDelegate = self.drawerTransitionDelegate
-        self.modalPresentationStyle = .Custom
+    func removeChildController(controller: UIViewController?) {
+        if let controller = controller {
+            controller.view.removeFromSuperview()
+            controller.removeFromParentViewController()
+        }
     }
 
     func handleTapGesture(gesture: UIGestureRecognizer) {
         if self.view.isEqual(gesture.view) {
-            self.toggleDrawer(.None, sender: nil)
+            self.toggleDrawer(.None)
         }
     }
 
-    func toggleDrawer(state: KMDrawerState, sender: UIViewController?) {
+    func toggleDrawer(state: KMDrawerState) {
         if state == self.drawerState { return }
         switch state {
         case .Left:
-            if let sender = sender {
-                sender.presentViewController(self, animated: true, completion: { () -> Void in
-                    self.drawerState = .Left
+            if let controller = self.leftController {
+                controller.transitioningDelegate = self.drawerTransitionDelegate
+                controller.modalPresentationStyle = .Custom
+                self.presentViewController(controller, animated: true, completion: {
+                    self.drawerState = state
+                    self.addChildViewController(controller)
+                    controller.didMoveToParentViewController(self)
                 })
             }
         default:
-            let completion: Void -> Void = {
-                self.drawerState = .None
-            }
-            if let sender = sender {
-                sender.dismissViewControllerAnimated(true, completion: completion)
-            } else {
-                self.presentingViewController?.dismissViewControllerAnimated(true, completion: completion)
+            switch self.drawerState {
+            case .Left:
+                if let controller = self.leftController {
+                    controller.willMoveToParentViewController(nil)
+                    controller.removeFromParentViewController()
+                    controller.dismissViewControllerAnimated(true, completion: {
+                        self.drawerState = state
+                    })
+                }
+            default:
+                break
             }
         }
     }
 
     // MARK: - UIGestureRecognizerDelegate
-
+    /*
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
         return self.view.isEqual(touch.view)
+    }
+    */
+}
+
+extension UIViewController {
+    var drawerController: KMDrawerController? {
+        var parent: UIViewController? = self.parentViewController
+        while (parent != nil) {
+            if (parent is KMDrawerController) {
+                return parent as? KMDrawerController
+            }
+            parent = parent?.parentViewController
+        }
+        return nil
     }
 }

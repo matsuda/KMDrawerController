@@ -46,6 +46,12 @@ class MenuController: UITableViewController {
         return cell!
     }
 
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if let controller = self.drawerController {
+            controller.toggleDrawer(.None)
+        }
+    }
+
     /*
     // MARK: - Navigation
 
