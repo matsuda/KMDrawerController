@@ -20,4 +20,7 @@ class KMDrawerTransitionDelegate: NSObject, UIViewControllerTransitioningDelegat
         return KMDrawerAnimator(presenting: false)
     }
 
+    func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController!, sourceViewController source: UIViewController) -> UIPresentationController? {
+        return KMDrawerPresentationController(presentedViewController: presented, presentingViewController: presenting)
+    }
 }

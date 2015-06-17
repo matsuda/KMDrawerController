@@ -42,11 +42,15 @@ class DrawerController: KMDrawerController, UIViewControllerTransitioningDelegat
 
     func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         let animator = KMDrawerAnimator(presenting: true)
-        animator.drawerRatio = 0.9
+        animator.drawerRatio = 0.8
         return animator
     }
 
     func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return KMDrawerAnimator(presenting: false)
+    }
+
+    func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController!, sourceViewController source: UIViewController) -> UIPresentationController? {
+        return KMDrawerPresentationController(presentedViewController: presented, presentingViewController: presenting)
     }
 }
