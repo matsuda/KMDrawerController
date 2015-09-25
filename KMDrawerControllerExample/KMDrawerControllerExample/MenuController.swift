@@ -29,7 +29,7 @@ class MenuController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let CellIdentifier = "Cell"
-        var cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier) as? UITableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier)
         if cell == nil {
             cell = UITableViewCell(style: .Default, reuseIdentifier: CellIdentifier)
         }

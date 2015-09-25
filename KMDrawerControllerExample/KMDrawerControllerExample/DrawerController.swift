@@ -18,7 +18,7 @@ class DrawerController: KMDrawerController, UIViewControllerTransitioningDelegat
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.centerController = self.storyboard?.instantiateViewControllerWithIdentifier("RootNavigation") as! UIViewController
+        self.centerController = self.storyboard?.instantiateViewControllerWithIdentifier("RootNavigation")
         self.leftController = MenuController(style:.Grouped)
         self.drawerTransitionDelegate = self
     }
@@ -50,7 +50,7 @@ class DrawerController: KMDrawerController, UIViewControllerTransitioningDelegat
         return KMDrawerAnimator(presenting: false)
     }
 
-    func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController!, sourceViewController source: UIViewController) -> UIPresentationController? {
+    func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController, sourceViewController source: UIViewController) -> UIPresentationController? {
         return KMDrawerPresentationController(presentedViewController: presented, presentingViewController: presenting)
     }
 }

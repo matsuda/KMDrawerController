@@ -13,7 +13,7 @@ class KMDrawerPresentationController: UIPresentationController {
     var overlay: UIView!
 
     override func presentationTransitionWillBegin() {
-        let containerView = self.containerView
+        let containerView = self.containerView!
 
         /*
         let view = UIVisualEffectView(effect: UIBlurEffect(style: .Dark))
@@ -41,7 +41,7 @@ class KMDrawerPresentationController: UIPresentationController {
 
         self.presentedViewController.transitionCoordinator()?.animateAlongsideTransition({ [unowned self] (context: UIViewControllerTransitionCoordinatorContext!) -> Void in
             self.overlay.alpha = 0.5
-        }, completion: { [unowned self] (context :UIViewControllerTransitionCoordinatorContext!) -> Void in
+        }, completion: { (context :UIViewControllerTransitionCoordinatorContext!) -> Void in
         })
     }
 
@@ -59,7 +59,7 @@ class KMDrawerPresentationController: UIPresentationController {
     }
 
     override func containerViewWillLayoutSubviews() {
-        self.overlay.frame = self.containerView.bounds
+        self.overlay.frame = self.containerView!.bounds
     }
 
     override func containerViewDidLayoutSubviews() {
